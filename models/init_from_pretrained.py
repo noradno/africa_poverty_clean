@@ -67,7 +67,7 @@ def get_saved_var_name(model_var: tf.Variable, bottleneck: bool = False) -> Opti
 
 
 def init_first_layer_weights(var: tf.Variable, rgb_weights: np.ndarray,
-                             sess: tf.Session, hs_weight_init: str) -> None:
+                             sess: tf.compat.v1.Session, hs_weight_init: str) -> None:
     '''Initializes the weights for filters in the first conv layer.
 
     'resnet/scale1/weights:0' for ResNet
@@ -139,7 +139,7 @@ def init_first_layer_weights(var: tf.Variable, rgb_weights: np.ndarray,
     sess.run(var.assign(final_weight))
 
 
-def init_resnet_v2_from_numpy(path: str, sess: tf.Session,
+def init_resnet_v2_from_numpy(path: str, sess: tf.compat.v1.Session,
                               bottleneck: bool = False,
                               hs_weight_init: str = 'random'
                               ) -> None:

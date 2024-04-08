@@ -46,7 +46,7 @@ import tensorflow as tf
 ROOT_DIR = os.path.dirname(__file__)  # folder containing this file
 
 
-def run_training(sess: tf.Session,
+def run_training(sess: tf.compat.v1.Session,
                  ooc: bool,
                  dataset: str,
                  keep_frac: float,
@@ -253,12 +253,12 @@ def run_training_wrapper(**params: Any) -> None:
             params[p] = None
 
     # reset any existing graph
-    tf.reset_default_graph()
+    tf.compat.v1.reset_default_graph()
 
     # set the random seeds
     seed = params['seed']
     np.random.seed(seed)
-    tf.set_random_seed(seed)
+    tf.compat.v1.set_random_seed(seed)
 
     # create the output directory if needed
     full_experiment_name = get_full_experiment_name(
@@ -282,9 +282,9 @@ def run_training_wrapper(**params: Any) -> None:
     else:
         os.environ['CUDA_VISIBLE_DEVICES'] = str(params['gpu'])
 
-    config = tf.ConfigProto()
+    config = tf.compat.v1.ConfigProto()
     config.gpu_options.allow_growth = True
-    sess = tf.Session(config=config)
+    sess = tf.compat.v1.Session(config=config)
 
     model_params = {
         'fc_reg': params['fc_reg'],

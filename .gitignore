@@ -3,9 +3,10 @@
 ckpts/
 data/dhs_tfrecords/
 data/dhs_tfrecords_raw/
+data/dhs_tfrecords_raw_eth16/
 data/dhsnl_tfrecords/
 data/dhsnl_tfrecords_raw/
-data/lsms_tfrecords/
+xydata/lsms_tfrecords/
 data/lsms_tfrecords_raw/
 logs/
 outputs/
@@ -202,3 +203,4 @@ vignettes/*.pdf
 
 # pkgdown site
 docs/
+*.gz
